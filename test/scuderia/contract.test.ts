@@ -7,9 +7,6 @@ import { Contract } from "typechain";
 
 use(chaiAsPromised);
 
-const { deploy } = deployments;
-
-
 describe("Contract Testing", () => {
   let Contract: Contract;
 
