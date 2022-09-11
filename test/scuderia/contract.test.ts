@@ -1,7 +1,6 @@
 import { ethers, deployments } from "hardhat";
 import { expect, use } from "chai";
 import chaiAsPromised from "chai-as-promised";
-import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { BigNumber } from "ethers";
 import { Contract } from "typechain";
 
