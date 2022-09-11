@@ -108,7 +108,7 @@ yarn verify --network polygon 0xPolygonContractAddress "Param 0" "Param 1"
 |[*@nomicfoundation/hardhat-toolbox*](https://www.npmjs.com/package/@nomicfoundation/hardhat-toolbox)| bundles all the commonly used packages and Hardhat plugins to start developing with Hardhat|
 |[*@nomiclabs/hardhat-ethers*](https://www.npmjs.com/package/@nomiclabs/hardhat-ethers)| Hardhat plugin for integration with ethers.js|
 |[*@nomiclabs/hardhat-etherscan*](https://www.npmjs.com/package/@nomiclabs/hardhat-etherscan)|Hardhat plugin for integration with Etherscan's contract verification service|
-|[*@openzeppelin/contracts*](https://www.npmjs.com/package/@openzeppelin/contracts)| A library for secure smart contract development. Build on a solid foundation of community-vetted cod|
+|[*@openzeppelin/contracts*](https://www.npmjs.com/package/@openzeppelin/contracts)| A library for secure smart contract development. Build on a solid foundation of community-vetted code|
 |[*@openzeppelin/hardhat-upgrades*](https://www.npmjs.com/package/@openzeppelin/hardhat-upgrades)| Hardhat plugin for deploying and managing upgradeable contracts. This package adds functions to your Hardhat scripts so you can deploy and upgrade proxies for your contracts|
 |[*chai*](https://www.npmjs.com/package/chai)| Chai is a BDD / TDD assertion library for node|
 |[*chai-as-promised*](https://www.npmjs.com/package/chai-as-promised)| Chai as Promised extends Chai with a fluent language for asserting facts about promises|
