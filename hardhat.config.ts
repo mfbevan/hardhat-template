@@ -21,12 +21,13 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   for (const account of accounts) {
     console.log(account.address);
   }
-
-  await hre.network.provider.send("evm_setIntervalMining", [5000]);
 });
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
+
+const accounts =
+  process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [];
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -44,39 +45,57 @@ const config: HardhatUserConfig = {
       allowUnlimitedContractSize: true,
     },
     goerli: {
-      url: process.env.GOERLI_URL || "",
-      accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      url: process.env.GOERLI_RPC_URL || "",
+      accounts,
+      gas: 2100000,
+      gasPrice: 8000000000,
+      saveDeployments: true,
+    },
+    mainnet: {
+      url: process.env.MAINNET_RPC_URL || "",
+      accounts,
       gas: 2100000,
       gasPrice: 8000000000,
       saveDeployments: true,
     },
     mumbai: {
-      url: process.env.MUMBAI_RPC_URL,
-      accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      url: process.env.MUMBAI_RPC_URL || "",
+      accounts,
       saveDeployments: true,
     },
     polygon: {
-      url: process.env.POLYGON_RPC_URL,
-      accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      url: process.env.POLYGON_RPC_URL || "",
+      accounts,
       saveDeployments: true,
-    }
+    },
   },
   gasReporter: {
     enabled: true,
     currency: "USD",
   },
   etherscan: {
-    apiKey: process.env.POLYGONSCAN_API_KEY,
+    apiKey: {
+      mainnet: process.env.ETHERSCAN_API_KEY || "",
+      goerli: process.env.ETHERSCAN_API_KEY || "",
+      mumbai: process.env.POLYGONSCAN_API_KEY || "",
+      polygon: process.env.POLYGONSCAN_API_KEY || "",
+    },
+    customChains: [
+      {
+        network: "mumbai",
+        chainId: 80001,
+        urls: {
+          apiURL: "https://api-mumbai.polygonscan.com/api",
+          browserURL: "https://mumbai.polygonscan.com/"
+        }
+      }
+    ]
   },
   namedAccounts: {
     deployer: 0,
     alice: 1,
     bob: 2,
     carol: 3,
-    ted: 4,
   },
   typechain: {
     outDir: "typechain",

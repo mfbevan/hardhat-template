@@ -1,5 +1,5 @@
 {
-    "name": "@scuderia/contracts",
+    "name": "contracts",
     "version": "1.0.0",
     "description": "",
     "scripts": {
@@ -8,14 +8,17 @@
         "lint": "tslint --config tslint.json --project tsconfig.json && solhint contracts/**/*.sol",
         "format": "prettier --check \"**/*.{ts,js,sol}\"",
         "format:fix": "prettier --write \"**/*.{ts,js,sol}\"",
-        "build:contracts": "npm run clean && npm run compile",
+        "build": "npm run clean && npm run compile",
         "clean": "npx hardhat clean",
         "compile": "hardhat compile",
         "coverage": "npx hardhat coverage",
         "deploy:local": "npx hardhat --network hardhat deploy --export ./lib/export.json",
         "deploy:goerli": "npx hardhat --network goerli deploy --export ./lib/export.json",
         "deploy:mainnet": "npx hardhat --network mainnet deploy --export ./lib/export.json",
-        "test": "npx hardhat test --show-stack-traces"
+        "deploy:mumbai": "npx hardhat --network mumbai deploy --export ./lib/export.json",
+        "deploy:polygon": "npx hardhat --network polygon deploy --export ./lib/export.json",
+        "test": "npx hardhat test --show-stack-traces",
+        "verify": "npx hardhat verify"
     },
     "files": [
         "dist/src/",
